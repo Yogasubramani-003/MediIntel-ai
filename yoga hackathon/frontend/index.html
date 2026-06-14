@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediIntel AI</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">MI</div>
+        <div>
+          <h1>MediIntel AI</h1>
+          <p>Medical Record Intelligence</p>
+        </div>
+      </div>
+      <nav>
+        <button class="nav-link active" data-target="dashboard">Dashboard</button>
+        <button class="nav-link" data-target="upload">Upload</button>
+        <button class="nav-link" data-target="chat">AI Chat</button>
+      </nav>
+      <div class="theme-toggle">
+        <span>Dark mode</span>
+        <button id="toggleTheme">Toggle</button>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <div>
+          <h2>MediIntel AI</h2>
+          <p>Upload medical documents and generate a live patient intelligence dashboard.</p>
+        </div>
+      </header>
+
+      <section class="hero" id="heroSection">
+        <div class="hero-copy">
+          <h1>Smart medical intelligence for every clinical record</h1>
+          <p>Analyze PDFs, prescriptions, lab reports, discharge summaries, and medical images in real-time.</p>
+        </div>
+      </section>
+
+      <section class="panel" id="uploadPanel">
+        <div class="panel-header">
+          <div>
+            <h3>Upload Medical Documents</h3>
+            <p>Drag and drop a file, or browse to upload PDF, JPG, JPEG, or PNG.</p>
+          </div>
+        </div>
+        <div class="upload-zone" id="uploadZone">
+          <div class="upload-icon">⬆️</div>
+          <strong>Drag & drop files here</strong>
+          <span>or</span>
+          <button id="browseButton">Browse Files</button>
+          <input type="file" id="fileInput" accept="application/pdf,image/png,image/jpeg" hidden />
+          <div class="upload-footnote">Supported: Medical PDF, Prescription, Hospital Report, Lab Report, Discharge Summary, JPG, JPEG, PNG</div>
+        </div>
+        <div class="status-card" id="statusCard" hidden>
+          <div class="status-line" id="statusLine">Waiting for upload...</div>
+          <div class="progress-bar"><div id="progressFill"></div></div>
+        </div>
+      </section>
+
+      <section class="dashboard" id="dashboardSection">
+        <div class="section-heading">
+          <h2>Patient Intelligence</h2>
+          <p>Data appears here after successful document analysis.</p>
+        </div>
+        <div class="empty-state" id="emptyState">
+          <p>No patient record loaded yet.</p>
+          <span>Upload a medical document to populate the dashboard.</span>
+        </div>
+        <div id="dashboardContent" class="dashboard-content" hidden>
+          <div class="grid two-col">
+            <div class="card profile-card" id="profileCard"></div>
+            <div class="card summary-card" id="summaryCard"></div>
+          </div>
+          <div class="grid two-col">
+            <div class="card" id="medicationsCard"></div>
+            <div class="card" id="riskCard"></div>
+          </div>
+          <div class="card" id="labsCard"></div>
+          <div class="grid two-col">
+            <div class="card chart-card" id="riskChart"></div>
+            <div class="card chart-card" id="labsChart"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="chatPanel">
+        <div class="section-heading">
+          <h2>AI Chat Assistant</h2>
+          <p>Ask questions based on the extracted patient record.</p>
+        </div>
+        <div class="chat-card">
+          <div class="chat-inputs">
+            <input type="text" id="chatQuestion" placeholder="Ask about diagnosis, medications, risks, or lab results" />
+            <button id="chatSubmit">Ask MediIntel</button>
+          </div>
+          <div class="chat-response" id="chatResponse"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
